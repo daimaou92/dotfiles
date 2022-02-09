@@ -48,3 +48,6 @@ for FILE in *; do
 done
 cd $P
 $(which nvim) -c "PlugInstall" -c "q!" -c "q!"
+$(which nvim) \
+	-c "TSInstallSync! go html javascript json make rust svelte toml yaml" \
+	-c "q!"

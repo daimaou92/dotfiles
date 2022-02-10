@@ -52,6 +52,8 @@ lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incr
 let loaded_matchparen = 1
 let mapleader = " "
 
+let g:neoformat_enabled_go = ['goimports']
+
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
 inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
 
@@ -68,7 +70,8 @@ augroup END
 
 augroup DAIMAOU92
     autocmd!
-    autocmd BufWritePre lua,cpp,c,h,hpp,cxx,cc Neoformat
-    autocmd BufWritePre * %s/\s\+$//e
+    " autocmd BufWritePre lua,cpp,c,h,hpp,cxx,cc Neoformat
+	autocmd BufWritePre * undojoin | Neoformat
+	autocmd BufWritePre * %s/\s\+$//e
     autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
 augroup END

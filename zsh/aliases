@@ -1,0 +1,3 @@
+alias zc="nvim $ZDOTDIR/.zshrc"
+alias azc="source $ZDOTDIR/.zshrc"
+alias vim="/usr/bin/nvim"

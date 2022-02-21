@@ -14,4 +14,8 @@ scriptDir() {
 }
 
 S=`scriptDir`
-ln -sf "$S/tmux.conf" "$HOME/.tmux.conf"
+P=`pwd`
+cd $S/x
+ln -sf "$(pwd)/.Xresources" "$HOME/.Xresources"
+ln -sf "$(pwd)/.xinitrc" "$HOME/.xinitrc"
+cd $P

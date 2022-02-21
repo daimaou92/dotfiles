@@ -23,25 +23,25 @@ scriptDir() {
 
 P=`pwd`
 SD=`scriptDir`
-cd $SD
+cd $SD/nvim
 for FILE in *; do
-	F="${SD}/$FILE"
+	F="$(pwd)/$FILE"
 	if [ -f "$F" ]; then
 		ln -sf $F "${NVD}/$FILE"
 	fi
 done
 
-cd ./plugin
+cd $SD/nvim/plugin
 for FILE in *; do
-	F="${SD}/plugin/$FILE"
+	F="$(pwd)/$FILE"
 	if [ -f "$F" ]; then
 		ln -sf $F "${NVP}/$FILE"
 	fi
 done
 
-cd $SD && cd ./lua/daimaou92
+cd $SD/nvim/lua/daimaou92
 for FILE in *; do
-	F="${SD}/lua/daimaou92/$FILE"
+	F="$(pwd)/$FILE"
 	if [ -f "$F" ]; then
 		ln -sf $F "${NVL}/$FILE"
 	fi

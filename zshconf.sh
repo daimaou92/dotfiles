@@ -28,6 +28,31 @@ makepkg -sirc --noconfirm
 cd ../ && rm -rf nerd-fonts-hack
 cd $P
 
+# Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+source $HOME/.cargo/env
+# fnm
+cargo install fnm
+NV=`fnm ls-remote | tail -n1`
+fnm install "$NV"
+# create $HOME/.local/bin directory for node to symlink to
+mkdir $HOME/.local/bin
+
+# golang
+# use below to install latest version of go
+# GV=`git -c 'versionsort.suffix=-' ls-remote --tags --sort='v:refname' \
+# 	https://github.com/golang/go | egrep -e '.*tags/go[0-9.]+$' | \
+# 	tail -n1 | awk '{print $2}' | cut -d'/' -f3`
+TD=`mktemp -d`
+cd $TD
+# Installing go1.17.7
+wget "https://go.dev/dl/go1.17.7.linux-arm64.tar.gz"
+[ -d /usr/local/go ] && sudo rm -rf /usr/local/go
+sudo pacman -Sy tar gzip --noconfirm
+sudo tar -C /usr/local -xzf "go1.17.7.linux-arm64.tar.gz"
+cd $P
+rm -rf $TD
+
 ln -sf "${SD}/zsh/.zshenv" "$HOME/.zshenv"
 cd $SD/zsh
 for FILE in * .[^.]*; do

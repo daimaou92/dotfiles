@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
-
+# neovim
 sudo pacman -Sy neovim --noconfirm
+# https://github.com/junegunn/vim-plug
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 NVD="$XDG_CONFIG_HOME/nvim"
 NVP="$NVD/plugin"
 NVL="$NVD/lua/daimaou92"

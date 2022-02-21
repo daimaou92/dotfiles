@@ -22,9 +22,10 @@ scriptDir() {
 
 P=`pwd`
 SD=`scriptDir`
+echo "Script Dir: $SD)"
 ln -sf "${SD}/zsh/.zshenv" "$HOME/.zshenv"
 cd $SD/zsh
-for i in * .[^.]*; do
+for FILE in * .[^.]*; do
 	F="$(pwd)/$FILE"
 	if [ -f "$F" ]; then
 		ln -sf $F "${ZDOTDIR}/$FILE"
@@ -33,4 +34,4 @@ done
 cd $P
 
 git clone "https://github.com/zplug/zplug" $ZPLUG_HOME
-zsh -c source "$ZDOTDIR/.zshrc"
+# zsh -c source "$ZDOTDIR/.zshrc"

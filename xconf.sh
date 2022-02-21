@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 sudo pacman -Sy xorg xorg-xinit i3-gaps i3blocks i3status i3lock feh dex \
-	dmenu picom kitty
+	dmenu picom kitty --noconfirm
 
 scriptDir() {
 	P=`pwd`

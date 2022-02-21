@@ -65,5 +65,8 @@ cd $P
 
 git clone "https://github.com/zplug/zplug" $ZPLUG_HOME
 
-[ ! -z "$(echo $0 | grep zsh)" ] && source "$ZDOTDIR/.zshrc" || \
+if [ ! -z "$(echo $0 | grep zsh)" ]; then
+	source "$ZDOTDIR/.zshrc"
+else
 	echo "please install zsh and change shell"
+fi

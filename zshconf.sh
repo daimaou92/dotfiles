@@ -24,7 +24,7 @@ P=`pwd`
 SD=`scriptDir`
 ln -sf "${SD}/zsh/.zshenv" "$HOME/.zshenv"
 cd $SD/zsh
-for FILE in *; do
+for i in * .[^.]*; do
 	F="$(pwd)/$FILE"
 	if [ -f "$F" ]; then
 		ln -sf $F "${ZDOTDIR}/$FILE"

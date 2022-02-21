@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 sudo pacman -Sy neovim --noconfirm
 NVD="$XDG_CONFIG_HOME/nvim"
@@ -25,7 +25,7 @@ scriptDir() {
 P=`pwd`
 SD=`scriptDir`
 cd $SD/nvim
-for FILE in *; do
+for FILE in * .[^.]*; do
 	F="$(pwd)/$FILE"
 	if [ -f "$F" ]; then
 		ln -sf $F "${NVD}/$FILE"
@@ -33,7 +33,7 @@ for FILE in *; do
 done
 
 cd $SD/nvim/plugin
-for FILE in *; do
+for FILE in * .[^.]*; do
 	F="$(pwd)/$FILE"
 	if [ -f "$F" ]; then
 		ln -sf $F "${NVP}/$FILE"
@@ -41,7 +41,7 @@ for FILE in *; do
 done
 
 cd $SD/nvim/lua/daimaou92
-for FILE in *; do
+for FILE in * .[^.]*; do
 	F="$(pwd)/$FILE"
 	if [ -f "$F" ]; then
 		ln -sf $F "${NVL}/$FILE"

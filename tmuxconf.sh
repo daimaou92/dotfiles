@@ -13,5 +13,6 @@ scriptDir() {
 	fi
 }
 
+sudo pacman -Sy tmux --noconfirm
 S=`scriptDir`
 ln -sf "$S/tmux/tmux.conf" "$HOME/.tmux.conf"

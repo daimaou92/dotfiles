@@ -1,5 +1,6 @@
 #!/bin/sh
 
+sudo pacman -Sy neovim --noconfirm
 NVD="$XDG_CONFIG_HOME/nvim"
 NVP="$NVD/plugin"
 NVL="$NVD/lua/daimaou92"

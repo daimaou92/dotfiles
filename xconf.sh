@@ -19,6 +19,7 @@ cd $S/x
 ln -sf "$(pwd)/.Xresources" "$HOME/.Xresources"
 ln -sf "$(pwd)/.xinitrc" "$HOME/.xinitrc"
 
+mkdir -p "$XDG_CONFIG_HOME/i3"
 [ -z "$XDG_CONFIG_HOME" ] && export XDG_CONFIG_HOME="$HOME/.config"
 cd $S/x/i3 && \
 for FILE in *; do
@@ -28,6 +29,7 @@ for FILE in *; do
 	fi
 done
 
+mkdir -p "$XDG_CONFIG_HOME/kitty"
 cd $S/x/kitty && \
 for FILE in *; do
 	F="$(pwd)/$FILE"

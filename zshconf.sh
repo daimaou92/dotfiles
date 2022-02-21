@@ -1,4 +1,6 @@
 #!/bin/sh
+sudo pacman -Sy zsh --noconfirm
+sudo chsh -s /bin/zsh `whoami`
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 mkdir -p $ZDOTDIR
@@ -31,4 +33,4 @@ done
 cd $P
 
 git clone "https://github.com/zplug/zplug" $ZPLUG_HOME
-source $ZDOTDIR/.zshrc
+zsh -c source "$ZDOTDIR/.zshrc"

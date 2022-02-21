@@ -1,6 +1,4 @@
 #!/bin/sh
-sudo pacman -Sy zsh --noconfirm
-sudo chsh -s /bin/zsh `whoami`
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 mkdir -p $ZDOTDIR
@@ -22,7 +20,14 @@ scriptDir() {
 
 P=`pwd`
 SD=`scriptDir`
-echo "Script Dir: $SD)"
+
+cd /tmp
+git clone https://aur.archlinux.org/nerd-fonts-hack.git
+cd nerd-fonts-hack
+makepkg -sirc --noconfirm
+cd ../ && rm -rf nerd-fonts-hack
+cd $P
+
 ln -sf "${SD}/zsh/.zshenv" "$HOME/.zshenv"
 cd $SD/zsh
 for FILE in * .[^.]*; do
@@ -34,4 +39,6 @@ done
 cd $P
 
 git clone "https://github.com/zplug/zplug" $ZPLUG_HOME
-# zsh -c source "$ZDOTDIR/.zshrc"
+
+[ ! -z "$(echo $0 | grep zsh)" ] && source "$ZDOTDIR/.zshrc" || \
+	echo "please install zsh and change shell"

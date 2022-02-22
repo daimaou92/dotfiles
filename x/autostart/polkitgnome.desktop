@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Exec=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+Name=Polkit Gnome Authentication Agent
+# KDE bug 190522: KDE does not autostart items with NoDisplay=true...
+# NoDisplay=true
+X-KDE-autostart-phase=1
+

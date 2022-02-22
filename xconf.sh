@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 sudo pacman -Sy xorg xorg-xinit i3-gaps i3blocks i3status i3lock feh dex \
-	dmenu picom kitty imagemagick libcanberra --noconfirm
+	dmenu picom kitty imagemagick libcanberra polkit polkit-gnome \
+	xclip --noconfirm
 
 scriptDir() {
 	P=`pwd`
@@ -21,6 +22,7 @@ P=`pwd`
 cd $S/x
 ln -sf "$(pwd)/.Xresources" "$HOME/.Xresources"
 ln -sf "$(pwd)/.xinitrc" "$HOME/.xinitrc"
+sudo cp ./autostart/polkitgnome.desktop /etc/xdg/autostart/polkitgnome.desktop
 
 [ -z "$XDG_CONFIG_HOME" ] && export XDG_CONFIG_HOME="$HOME/.config"
 mkdir -p "$XDG_CONFIG_HOME/i3"

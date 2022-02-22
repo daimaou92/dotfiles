@@ -21,12 +21,8 @@ scriptDir() {
 P=`pwd`
 SD=`scriptDir`
 
-cd /tmp
-git clone https://aur.archlinux.org/nerd-fonts-hack.git
-cd nerd-fonts-hack
-makepkg -sirc --noconfirm
-cd ../ && rm -rf nerd-fonts-hack
-cd $P
+# $HOME/shares is used to mount shared folders from vmware
+mkdir -p $HOME/shares
 
 # Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y

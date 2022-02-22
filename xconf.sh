@@ -19,6 +19,15 @@ scriptDir() {
 
 S=`scriptDir`
 P=`pwd`
+
+# Font
+cd /tmp
+git clone https://aur.archlinux.org/nerd-fonts-hack.git
+cd nerd-fonts-hack
+makepkg -sirc --noconfirm
+cd ../ && rm -rf nerd-fonts-hack
+cd $P
+
 cd $S/x
 ln -sf "$(pwd)/.Xresources" "$HOME/.Xresources"
 ln -sf "$(pwd)/.xinitrc" "$HOME/.xinitrc"

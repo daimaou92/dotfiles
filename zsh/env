@@ -1,4 +1,6 @@
 export GOPATH="$HOME/code/go"
+export EDITOR="/usr/bin/nvim"
+export VISUAL="$EDITOR"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"

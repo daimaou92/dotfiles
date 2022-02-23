@@ -28,12 +28,21 @@ makepkg -sirc --noconfirm
 cd ../ && rm -rf nerd-fonts-hack
 cd $P
 
+[ -z "$XDG_CONFIG_HOME" ] && export XDG_CONFIG_HOME="$HOME/.config"
 cd $S/x
 ln -sf "$(pwd)/.Xresources" "$HOME/.Xresources"
 ln -sf "$(pwd)/.xinitrc" "$HOME/.xinitrc"
-sudo cp ./autostart/polkitgnome.desktop /etc/xdg/autostart/polkitgnome.desktop
+# sudo cp ./autostart/polkitgnome.desktop /etc/xdg/autostart/polkitgnome.desktop
 
-[ -z "$XDG_CONFIG_HOME" ] && export XDG_CONFIG_HOME="$HOME/.config"
+# Autostart polkit and picom
+mkdir -p "$XDG_CONFIG_HOME/autostart"
+ln -sf "$(pwd)/autostart/polkitgnome.desktop" \
+	"${XDG_CONFIG_HOME}/autostart/polkitgnome.desktop"
+ln -sf "$(pwd)/autostart/picom.desktop" \
+	"${XDG_CONFIG_HOME}/autostart/picom.desktop"
+
+
+# i3 config
 mkdir -p "$XDG_CONFIG_HOME/i3"
 cd $S/x/i3 && \
 for FILE in * .[^.]*; do
@@ -43,6 +52,7 @@ for FILE in * .[^.]*; do
 	fi
 done
 
+# kitty config
 mkdir -p "$XDG_CONFIG_HOME/kitty"
 cd $S/x/kitty && \
 for FILE in * .[^.]*; do
@@ -51,4 +61,9 @@ for FILE in * .[^.]*; do
 		ln -sf $F "$XDG_CONFIG_HOME/kitty/$FILE"
 	fi
 done
+
+# picom config
+mkdir -p "$XDG_CONFIG_HOME/picom"
+cd $S/x/picom && \
+ln -sf "$(pwd)/picom.conf" "${XDG_CONFIG_HOME}/picom/picom.conf"
 cd $P

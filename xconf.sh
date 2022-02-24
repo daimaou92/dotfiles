@@ -66,4 +66,12 @@ done
 mkdir -p "$XDG_CONFIG_HOME/picom"
 cd $S/x/picom && \
 ln -sf "$(pwd)/picom.conf" "${XDG_CONFIG_HOME}/picom/picom.conf"
+
+
+# set wallpaper
+mkdir -p "$HOME/.cache" && cp "${SD}/wallpaper.jpg" \
+	"$HOME/.cache/.wallpaper.jpg"
+feh --bg-fill "$HOME/.cache/.wallpaper.jpg"
+[ -f "$HOME/.fehbg" ] && chmod +x "$HOME/.fehbg"
+
 cd $P

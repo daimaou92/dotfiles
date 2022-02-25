@@ -76,28 +76,95 @@ local function config(_config)
 end
 
 -- lsp-installer setups
-local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.on_server_ready(function(server)
-    local opts = {}
+-- local lsp_installer = require("nvim-lsp-installer")
+-- lsp_installer.on_server_ready(function(server)
+--     local opts = {}
+--
+--     if server.name == "gopls" then
+--         opts.settings = {
+-- 			gopls = {
+-- 				analyses = {
+-- 					unusedparams = true,
+-- 				},
+-- 				staticcheck = true,
+-- 			},
+-- 		}
+-- 		opts.cmd = {"gopls", "serve"}
+--     end
+--
+-- 	if server.name == "rust_analyzer" then
+-- 		opts.cmd = {"rustup", "run", "nightly", "rust-analyzer"}
+-- 	end
+--
+-- 	server:setup(opts)
+-- end)
 
-    if server.name == "gopls" then
-        opts.settings = {
-			gopls = {
-				analyses = {
-					unusedparams = true,
-				},
-				staticcheck = true,
-			},
-		}
-		opts.cmd = {"gopls", "serve"}
-    end
+------------------------------
+---- server setups -----------
+------------------------------
 
-	if server.name == "rust_analyzer" then
-		opts.cmd = {"rustup", "run", "nightly", "rust-analyzer"}
-	end
+-- Bash
+require'lspconfig'.bashls.setup{}
 
-	server:setup(opts)
-end)
+-- CSS
+require'lspconfig'.cssls.setup {
+  capabilities = capabilities,
+}
+
+-- CSS Modules
+require'lspconfig'.cssmodules_ls.setup{}
+
+-- Docker LS
+require'lspconfig'.dockerls.setup{}
+
+-- Go (gopls)
+require'lspconfig'.gopls.setup{
+	cmd = {
+		"gopls", "serve",
+	},
+	settings = {
+ 		gopls = {
+ 			analyses = {
+ 				unusedparams = true,
+ 			},
+ 			staticcheck = true,
+		},
+	},
+}
+
+-- HTML
+require'lspconfig'.html.setup {
+  capabilities = capabilities,
+}
+
+-- JSON
+require'lspconfig'.jsonls.setup {
+  capabilities = capabilities,
+}
+
+-- Markdown (remarkable)
+require'lspconfig'.remark_ls.setup{}
+
+-- Rust Analyzer
+require'lspconfig'.rust_analyzer.setup{}
+
+-- SQLS
+require'lspconfig'.sqls.setup{}
+
+-- Svelte
+require'lspconfig'.svelte.setup{}
+
+-- TailwindCSS
+require'lspconfig'.tailwindcss.setup{}
+
+-- Taplo (TOML toolkit)
+require'lspconfig'.taplo.setup{}
+
+-- Typescript
+require'lspconfig'.tsserver.setup{}
+
+-- VimLS
+require'lspconfig'.vimls.setup{}
 
 local opts = {
 	-- whether to highlight the currently hovered symbol

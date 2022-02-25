@@ -106,7 +106,7 @@ ln -sf $S/x/fontconfig/fonts.conf "$XDG_CONFIG_HOME/fontconfig/"
 #######################
 ##### Wallpaper #######
 #######################
-mkdir -p "$HOME/.cache" && cp "${SD}/wallpaper.jpg" \
+mkdir -p "$HOME/.cache" && cp "${S}/wallpaper.jpg" \
 	"$HOME/.cache/.wallpaper.jpg"
 feh --bg-fill "$HOME/.cache/.wallpaper.jpg"
 [ -f "$HOME/.fehbg" ] && chmod +x "$HOME/.fehbg"

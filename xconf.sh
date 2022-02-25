@@ -72,12 +72,20 @@ ln -sf "$(pwd)/picom.conf" "${XDG_CONFIG_HOME}/picom/picom.conf"
 #### Fonts ######
 #################
 
-# Install Hack Nerd Patched Font
+# Install Apple fonts
 cd /tmp
-git clone https://aur.archlinux.org/nerd-fonts-hack.git
-cd nerd-fonts-hack
+git clone https://aur.archlinux.org/apple-fonts.git
+cd apple-fonts
+makepkg -sircA --noconfirm
+cd ../ && rm -rf apple-fonts
+cd $P
+
+# Install SF Mono Nerd Patched Font
+cd /tmp
+git clone https://aur.archlinux.org/nerd-fonts-sf-mono.git
+cd nerd-fonts-sf-mono
 makepkg -sirc --noconfirm
-cd ../ && rm -rf nerd-fonts-hack
+cd ../ && rm -rf nerd-fonts-sf-mono
 cd $P
 
 # enable font config support

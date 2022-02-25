@@ -75,7 +75,7 @@ local function config(_config)
 	}, _config or {})
 end
 
--- ls setups
+-- lsp-installer setups
 local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.on_server_ready(function(server)
     local opts = {}
@@ -98,23 +98,6 @@ lsp_installer.on_server_ready(function(server)
 
 	server:setup(opts)
 end)
--- require("lspconfig").tsserver.setup(config())
--- require("lspconfig").svelte.setup(config())
--- require("lspconfig").cssls.setup(config())
--- require("lspconfig").gopls.setup(config({
--- 	cmd = { "gopls", "serve" },
--- 	settings = {
--- 		gopls = {
--- 			analyses = {
--- 				unusedparams = true,
--- 			},
--- 			staticcheck = true,
--- 		},
--- 	},
--- }))
--- require("lspconfig").rust_analyzer.setup(config({
---     cmd = { "rustup", "run", "nightly", "rust-analyzer"},
--- }))
 
 local opts = {
 	-- whether to highlight the currently hovered symbol

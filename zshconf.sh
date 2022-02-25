@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 mkdir -p $ZDOTDIR

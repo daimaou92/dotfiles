@@ -80,12 +80,12 @@ makepkg -sircA --noconfirm
 cd ../ && rm -rf apple-fonts
 cd $P
 
-# Install SF Mono Nerd Patched Font
+# Installing Hack for nerd font glyphs
 cd /tmp
-git clone https://aur.archlinux.org/nerd-fonts-sf-mono.git
-cd nerd-fonts-sf-mono
+git clone https://aur.archlinux.org/nerd-fonts-hack.git
+cd nerd-fonts-hack
 makepkg -sirc --noconfirm
-cd ../ && rm -rf nerd-fonts-sf-mono
+cd ../ && rm -rf nerd-fonts-hack
 cd $P
 
 # enable font config support

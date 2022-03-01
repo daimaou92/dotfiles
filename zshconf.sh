@@ -36,16 +36,15 @@ mkdir $HOME/.local/bin
 
 # golang
 # use below to install latest version of go
-# GV=`git -c 'versionsort.suffix=-' ls-remote --tags --sort='v:refname' \
-# 	https://github.com/golang/go | egrep -e '.*tags/go[0-9.]+$' | \
-# 	tail -n1 | awk '{print $2}' | cut -d'/' -f3`
+GV=`git -c 'versionsort.suffix=-' ls-remote --tags --sort='v:refname' \
+	https://github.com/golang/go | egrep -e '.*tags/go[0-9.]+$' | \
+	tail -n1 | awk '{print $2}' | cut -d'/' -f3`
 TD=`mktemp -d`
 cd $TD
-# Installing go1.17.7
-wget "https://go.dev/dl/go1.17.7.linux-arm64.tar.gz"
+wget "https://go.dev/dl/${GV}.linux-arm64.tar.gz"
 [ -d /usr/local/go ] && sudo rm -rf /usr/local/go
 sudo pacman -Sy tar gzip --noconfirm
-sudo tar -C /usr/local -xzf "go1.17.7.linux-arm64.tar.gz"
+sudo tar -C /usr/local -xzf "${GV}.linux-arm64.tar.gz"
 cd $P
 rm -rf $TD
 

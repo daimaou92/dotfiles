@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-
-sudo pacman -Sy xorg xorg-xinit i3-gaps i3blocks i3status i3lock feh dex \
-	dmenu picom kitty imagemagick libcanberra polkit polkit-gnome \
-	xclip --noconfirm
-
 scriptDir() {
 	P=`pwd`
 	D="$(dirname $0)"
@@ -20,19 +15,37 @@ scriptDir() {
 S=`scriptDir`
 P=`pwd`
 
-# Font
+sudo pacman -Sy xorg xorg-xinit i3-gaps i3blocks i3status i3lock feh dex \
+	dmenu picom kitty imagemagick libcanberra polkit polkit-gnome \
+	xclip --noconfirm
 
+############################
+#### paru (AUR Helper) #####
+############################
+cd /tmp
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -sirc --noconfirm
+cd ../ && rm -rf paru
+cd $P
 
+####################
+### housekeeping ###
+####################
 [ -z "$XDG_CONFIG_HOME" ] && export XDG_CONFIG_HOME="$HOME/.config"
 cd $S/x
 ln -sf "$(pwd)/.Xresources" "$HOME/.Xresources"
 ln -sf "$(pwd)/.xinitrc" "$HOME/.xinitrc"
 # sudo cp ./autostart/polkitgnome.desktop /etc/xdg/autostart/polkitgnome.desktop
 
-# Autostart polkit and picom
+####################
+### Autostart ######
+####################
 mkdir -p "$XDG_CONFIG_HOME/autostart"
+# polkit client
 ln -sf "$(pwd)/autostart/polkitgnome.desktop" \
 	"${XDG_CONFIG_HOME}/autostart/polkitgnome.desktop"
+# picom (compositor x11)
 ln -sf "$(pwd)/autostart/picom.desktop" \
 	"${XDG_CONFIG_HOME}/autostart/picom.desktop"
 

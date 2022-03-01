@@ -23,7 +23,7 @@ npm install -g @tailwindcss/language-server prettier typescript \
 	typescript-language-server eslint vscode-langservers-extracted \
 	svelte-language-server vim-language-server \
 	bash-language-server cssmodules-language-server \
-	dockerfile-language-server-nodejs remark
+	dockerfile-language-server-nodejs yarn
 
 # go
 go install golang.org/x/tools/gopls@latest

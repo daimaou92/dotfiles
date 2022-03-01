@@ -29,6 +29,16 @@ makepkg -sirc --noconfirm
 cd ../ && rm -rf paru
 cd $P
 
+############################
+######## VS Code ###########
+############################
+cd /tmp
+git clone https://aur.archlinux.org/visual-studio-code-bin.git code
+cd code
+makepkg -sirc --noconfirm
+cd ../ && rm -rf code
+cd $P
+
 ####################
 ### housekeeping ###
 ####################

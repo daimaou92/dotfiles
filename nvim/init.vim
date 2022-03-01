@@ -16,7 +16,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'glepnir/lspsaga.nvim'
 	Plug 'simrat39/symbols-outline.nvim'
 	" MarkdownPreview
-	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 	" treesitter
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -66,6 +66,10 @@ smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' 
 
 " close all but current buffer
 nnoremap <leader>co :BufOnly<CR>
+
+" markdown-preview mappings
+nnoremap <C-s> :MarkdownPreview<CR>
+nnoremap <M-s> :MarkdownPreviewStop<CR>
 
 augroup highlight_yank
     autocmd!

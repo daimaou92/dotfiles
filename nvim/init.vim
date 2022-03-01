@@ -8,7 +8,6 @@ endif
 " Plugins (vim-plug)
 call plug#begin('~/.vim/plugged')
 	Plug 'neovim/nvim-lspconfig'
-"	Plug 'williamboman/nvim-lsp-installer'
 	Plug 'hrsh7th/cmp-nvim-lsp'
 	Plug 'hrsh7th/cmp-buffer'
 	Plug 'hrsh7th/nvim-cmp'
@@ -16,6 +15,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'nvim-lua/lsp_extensions.nvim'
 	Plug 'glepnir/lspsaga.nvim'
 	Plug 'simrat39/symbols-outline.nvim'
+	" MarkdownPreview
+	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 	" treesitter
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}

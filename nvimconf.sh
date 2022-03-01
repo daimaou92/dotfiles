@@ -21,9 +21,9 @@ sudo pacman -Sy neovim --noconfirm
 # install language servers
 npm install -g @tailwindcss/language-server prettier typescript \
 	typescript-language-server eslint vscode-langservers-extracted \
-	remark-language-server svelte-language-server vim-language-server \
+	svelte-language-server vim-language-server \
 	bash-language-server cssmodules-language-server \
-	dockerfile-language-server-nodejs
+	dockerfile-language-server-nodejs remark
 
 # go
 go install golang.org/x/tools/gopls@latest
@@ -41,6 +41,13 @@ rm -rf rust-analyzer
 
 # taplo TOML toolkit
 cargo install --locked taplo-lsp
+
+# zk
+cd /tmp
+git clone github.com/mickael-menu/zk && cd zk
+make clean install
+cd ../ && rm -rf zk
+cd $P
 
 # https://github.com/junegunn/vim-plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \

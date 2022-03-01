@@ -142,9 +142,6 @@ require'lspconfig'.jsonls.setup {
   capabilities = capabilities,
 }
 
--- Markdown (remarkable)
-require'lspconfig'.remark_ls.setup{}
-
 -- Rust Analyzer
 require'lspconfig'.rust_analyzer.setup{}
 
@@ -165,6 +162,9 @@ require'lspconfig'.tsserver.setup{}
 
 -- VimLS
 require'lspconfig'.vimls.setup{}
+
+-- zk (Markdown)
+require'lspconfig'.zk.setup{}
 
 local opts = {
 	-- whether to highlight the currently hovered symbol

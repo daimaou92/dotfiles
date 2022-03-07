@@ -164,7 +164,11 @@ require'lspconfig'.tsserver.setup{}
 require'lspconfig'.vimls.setup{}
 
 -- zk (Markdown)
-require'lspconfig'.zk.setup{}
+require'lspconfig'.zk.setup{
+	root_dir = function(fname)
+    	return vim.fn.getcwd()
+	end
+}
 
 local opts = {
 	-- whether to highlight the currently hovered symbol

@@ -45,6 +45,7 @@ call plug#begin('~/.vim/plugged')
 
 	Plug 'mhinz/vim-startify'
 	Plug 'gruvbox-community/gruvbox'
+	Plug 'crispgm/nvim-tabline'
 call plug#end()
 
 lua require("daimaou92")

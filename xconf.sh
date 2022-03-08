@@ -20,6 +20,16 @@ sudo pacman -Sy xorg xorg-xinit i3-gaps i3blocks i3status i3lock feh dex \
 	xclip --noconfirm
 
 ############################
+#### libxft-bgra ###########
+############################
+cd /tmp
+git clone https://aur.archlinux.org/libxft-bgra-git
+cd libxft-bgra-git
+makepkg -sircA --noconfirm
+cd ../ && rm -rf libxft-bgra-git
+cd $P
+
+############################
 #### paru (AUR Helper) #####
 ############################
 cd /tmp

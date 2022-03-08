@@ -28,6 +28,8 @@ call plug#begin('~/.vim/plugged')
 
 	" program helpers
 	Plug 'rust-lang/rust.vim'
+	" To enable more of the features of rust-analyzer, such as inlay hints and more!
+	Plug 'simrat39/rust-tools.nvim'
 	Plug 'darrikonn/vim-gofmt'
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-rhubarb'
@@ -82,5 +84,4 @@ augroup DAIMAOU92
     " autocmd BufWritePre lua,cpp,c,h,hpp,cxx,cc Neoformat
 	autocmd BufWritePre * undojoin | Neoformat
 	autocmd BufWritePre * %s/\s\+$//e
-    autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
 augroup END

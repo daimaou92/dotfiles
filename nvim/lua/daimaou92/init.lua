@@ -1,6 +1,14 @@
 require("daimaou92.telescope")
 require("daimaou92.lsp")
 
+-- tabline
+require('tabline').setup({
+    show_index = true,
+    show_modify = true,
+    modify_indicator = '[+]',
+    no_name = 'Untitled',
+})
+
 P = function(v)
   print(vim.inspect(v))
   return v

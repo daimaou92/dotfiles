@@ -84,3 +84,9 @@ augroup DAIMAOU92
 	autocmd BufWritePre * undojoin | Neoformat
 	autocmd BufWritePre * %s/\s\+$//e
 augroup END
+
+augroup cursorline
+  autocmd!
+  autocmd WinEnter,BufEnter * setlocal cursorline cursorcolumn
+  autocmd WinLeave,BufLeave * setlocal nocursorline nocursorcolumn
+augroup END

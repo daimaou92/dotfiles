@@ -19,8 +19,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 	" treesitter
-	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-	Plug 'nvim-treesitter/playground'
+	" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	" Plug 'nvim-treesitter/playground'
 
 	" snippets
 	Plug 'L3MON4D3/LuaSnip'
@@ -30,7 +30,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'rust-lang/rust.vim'
 	" To enable more of the features of rust-analyzer, such as inlay hints and more!
 	Plug 'simrat39/rust-tools.nvim'
-	Plug 'darrikonn/vim-gofmt'
+
+	" Plug 'darrikonn/vim-gofmt'
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-rhubarb'
 	Plug 'junegunn/gv.vim'
@@ -45,13 +46,15 @@ call plug#begin('~/.vim/plugged')
 	" prettier
 	Plug 'sbdchd/neoformat'
 
+	" Others
 	Plug 'mhinz/vim-startify'
 	Plug 'gruvbox-community/gruvbox'
+	Plug 'preservim/vim-colors-pencil'
 	Plug 'crispgm/nvim-tabline'
 call plug#end()
 
 lua require("daimaou92")
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
+" lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 
 let loaded_matchparen = 1
 let mapleader = " "
@@ -82,7 +85,8 @@ augroup END
 augroup DAIMAOU92
     autocmd!
     " autocmd BufWritePre lua,cpp,c,h,hpp,cxx,cc Neoformat
-	autocmd BufWritePre * undojoin | Neoformat
+	" autocmd BufWritePre * undojoin | Neoformat
+	autocmd BufWritePre * Neoformat
 	autocmd BufWritePre * %s/\s\+$//e
 augroup END
 

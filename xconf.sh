@@ -75,14 +75,7 @@ done
 ##################
 #### Kitty #######
 ##################
-mkdir -p "$XDG_CONFIG_HOME/kitty"
-cd $S/x/kitty && \
-for FILE in * .[^.]*; do
-	F="$(pwd)/$FILE"
-	if [ -f "$F" ]; then
-		ln -sf $F "$XDG_CONFIG_HOME/kitty/$FILE"
-	fi
-done
+/bin/bash $S/x/kitty/setup.sh
 
 ##################
 #### Picom #######

@@ -75,30 +75,6 @@ local function config(_config)
 	}, _config or {})
 end
 
--- lsp-installer setups
--- local lsp_installer = require("nvim-lsp-installer")
--- lsp_installer.on_server_ready(function(server)
---     local opts = {}
---
---     if server.name == "gopls" then
---         opts.settings = {
--- 			gopls = {
--- 				analyses = {
--- 					unusedparams = true,
--- 				},
--- 				staticcheck = true,
--- 			},
--- 		}
--- 		opts.cmd = {"gopls", "serve"}
---     end
---
--- 	if server.name == "rust_analyzer" then
--- 		opts.cmd = {"rustup", "run", "nightly", "rust-analyzer"}
--- 	end
---
--- 	server:setup(opts)
--- end)
-
 ------------------------------
 ---- server setups -----------
 ------------------------------
@@ -184,20 +160,13 @@ require'lspconfig'.svelte.setup{}
 require'lspconfig'.tailwindcss.setup{}
 
 -- Taplo (TOML toolkit)
-require'lspconfig'.taplo.setup{}
+-- require'lspconfig'.taplo.setup{}
 
 -- Typescript
 require'lspconfig'.tsserver.setup{}
 
 -- VimLS
 require'lspconfig'.vimls.setup{}
-
--- zk (Markdown)
-require'lspconfig'.zk.setup{
-	root_dir = function(fname)
-    	return vim.fn.getcwd()
-	end
-}
 
 local opts = {
 	-- whether to highlight the currently hovered symbol

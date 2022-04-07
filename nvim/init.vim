@@ -53,6 +53,9 @@ call plug#begin('~/.vim/plugged')
 	Plug 'crispgm/nvim-tabline'
 call plug#end()
 
+" syntax highlighting off
+syntax off
+
 lua require("daimaou92")
 " lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 

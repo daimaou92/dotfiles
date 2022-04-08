@@ -17,7 +17,7 @@ P=`pwd`
 
 sudo pacman -Sy xorg xorg-xinit i3-gaps i3blocks i3status i3lock feh dex \
 	dmenu picom kitty imagemagick libcanberra polkit polkit-gnome \
-	xclip --noconfirm
+	xclip ttf-joypixels --noconfirm
 
 ############################
 #### libxft-bgra ###########

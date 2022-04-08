@@ -8,6 +8,7 @@ endif
 " Plugins (vim-plug)
 call plug#begin('~/.vim/plugged')
 	Plug 'neovim/nvim-lspconfig'
+	Plug 'simrat39/rust-tools.nvim'
 	Plug 'hrsh7th/cmp-nvim-lsp'
 	Plug 'hrsh7th/cmp-buffer'
 	Plug 'hrsh7th/nvim-cmp'
@@ -19,8 +20,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 	" treesitter
-	" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-	" Plug 'nvim-treesitter/playground'
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	Plug 'nvim-treesitter/playground'
 
 	" snippets
 	Plug 'L3MON4D3/LuaSnip'
@@ -54,10 +55,10 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 " syntax highlighting off
-syntax off
+" syntax off
 
 lua require("daimaou92")
-" lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 
 let loaded_matchparen = 1
 let mapleader = " "

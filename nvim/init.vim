@@ -52,6 +52,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'gruvbox-community/gruvbox'
 	Plug 'preservim/vim-colors-pencil'
 	Plug 'crispgm/nvim-tabline'
+	Plug 'itchyny/lightline.vim'
 call plug#end()
 
 " syntax highlighting off

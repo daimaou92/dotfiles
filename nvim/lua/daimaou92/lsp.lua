@@ -116,19 +116,6 @@ require'lspconfig'.bashls.setup{
 	flags = flags,
 }
 
--- CSS
-require'lspconfig'.cssls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  flags = flags,
-}
-
--- CSS Modules
-require'lspconfig'.cssmodules_ls.setup{
-	on_attach = on_attach,
-	flags = flags,
-}
-
 -- Docker LS
 require'lspconfig'.dockerls.setup{
 	on_attach = on_attach,

@@ -1,0 +1,19 @@
+source $ZPLUG_HOME/init.zsh
+
+zplug "chrissicool/zsh-256color"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "plugins/git",   from:oh-my-zsh
+
+#Theme
+setopt prompt_subst
+# zplug "themes/miloshadzic", from:oh-my-zsh, use:miloshadzic.zsh-theme, as:theme, defer:3
+# zplug "Raytek/raytek-zsh-theme", use:raytek.zsh-theme, as:theme
+zplug "jackharrisonsherlock/common", use:common.zsh-theme, as:theme
+
+# Run after compinit
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+zplug check || zplug install
+
+# Then, source plugins and add commands to $PATH
+zplug load

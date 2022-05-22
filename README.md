@@ -3,7 +3,8 @@
 These are written assuming the following things:
 
 1. The system is a VM in VMWare
-2. An ArchLinux aarch64 install
+2. ArchLinux aarch64
+3. Work underway for Debian aarch64
 
 I personally use an Apple M1 device and this makes sense for my workflow.
 

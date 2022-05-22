@@ -39,5 +39,5 @@ feh --no-fehbg --bg-fill '$HOME/.cache/.wallpaper.jpg'" > \
 ln -sf "$SD/x/tmux.conf" "$HOME/.tmux.conf"
 
 # Fonts
-/bin/bash fonts.sh
+/bin/bash "$SD/fonts.sh"
 cd $P

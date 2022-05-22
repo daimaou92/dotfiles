@@ -17,4 +17,3 @@ SD=`scriptDir`
 
 /bin/bash "${SD}/alacritty.sh"
 /bin/bash "${SD}/nvim.sh"
-

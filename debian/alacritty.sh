@@ -3,7 +3,7 @@ set -e
 # Source cargo if 'tis there
 [[ -d "$HOME/.cargo" ]] && source "$HOME/.cargo/env"
 
-# Chek if cargo and rustup are installed
+# Check if cargo and rustup are installed
 CO=`command -v cargo`
 [[ -z $CO ]] && echo "\"cargo\" not found" && exit 1
 CO=`command -v rustup`
@@ -41,9 +41,9 @@ gzip -c extra/alacritty.man | sudo tee /usr/local/share/man/man1/alacritty.1.gz 
 gzip -c extra/alacritty-msg.man | sudo tee /usr/local/share/man/man1/alacritty-msg.1.gz > /dev/null
 
 # zsh completions
-mkdir -p ${ZDOTDIR:-~}/.zsh_functions
-cp extra/completions/_alacritty ${ZDOTDIR:-~}/.zsh_functions/_alacritty
-
+ZD="${ZDOTDIR:-$HOME/.config/zsh}"
+mkdir -p $ZD/.zsh_functions
+cp extra/completions/_alacritty $ZD/.zsh_functions/_alacritty
 
 cd $P
 sudo rm -rf $TD

@@ -43,6 +43,8 @@ sudo apt install -y tar gzip
 sudo tar -C /usr/local -xzf "${GV}.linux-arm64.tar.gz"
 cd $P
 rm -rf $TD
+# Create GOPATH
+mkdir -p $HOME/code/go
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"

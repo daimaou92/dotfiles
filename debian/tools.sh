@@ -17,3 +17,6 @@ SD=`scriptDir`
 
 /bin/bash "${SD}/alacritty.sh"
 /bin/bash "${SD}/nvim.sh"
+
+ln -sf "$SD/tools/gitconfig" "$HOME/.gitconfig"
+mkdir -p "$HOME/.ssh"

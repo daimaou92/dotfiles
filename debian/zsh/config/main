@@ -1,3 +1,5 @@
+# cargo
+source $HOME/.cargo/env
 source $ZDOTDIR/keybindings
 source $ZDOTDIR/history
 source $ZDOTDIR/zplug

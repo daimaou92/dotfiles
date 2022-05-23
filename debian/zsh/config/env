@@ -1,5 +1,5 @@
 export GOPATH="$HOME/code/go"
-export EDITOR="/usr/bin/nvim"
+export EDITOR="/usr/local/bin/nvim"
 export VISUAL="$EDITOR"
 export GDK_SCALE=2
 export GDK_DPI_SCALE=0.5

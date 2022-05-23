@@ -15,9 +15,8 @@ scriptDir() {
 P=`pwd`
 SD=`scriptDir`
 
-# $HOME/shares is used to mount shared folders from vmware
-# This is put here since .zprofile does the mounting
-mkdir -p $HOME/shares
+# Dependencies
+sudo apt install -y curl build-essential tar gzip
 
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -37,9 +36,8 @@ GV=`git -c 'versionsort.suffix=-' ls-remote --tags --sort='v:refname' \
 	tail -n1 | awk '{print $2}' | cut -d'/' -f3`
 TD=`mktemp -d`
 cd $TD
-wget "https://go.dev/dl/${GV}.linux-arm64.tar.gz"
+curl -LO "https://go.dev/dl/${GV}.linux-arm64.tar.gz"
 [ -d /usr/local/go ] && sudo rm -rf /usr/local/go
-sudo apt install -y tar gzip
 sudo tar -C /usr/local -xzf "${GV}.linux-arm64.tar.gz"
 cd $P
 rm -rf $TD

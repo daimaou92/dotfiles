@@ -6,6 +6,10 @@ EX=`grep "vmhgfs-fuse" /etc/fstab`
 echo "vmhgfs-fuse /mnt/hgfs  fuse defaults,allow_other   0   0" | \
 	sudo tee -a /etc/fstab
 
+# Networking
+sudo apt install -y network-manager
+sudo systemctl enable NetworkManager
+
 # zsh
 /bin/bash zsh.sh
 
@@ -13,4 +17,4 @@ echo "vmhgfs-fuse /mnt/hgfs  fuse defaults,allow_other   0   0" | \
 /bin/bash x.sh
 
 # Tools
-/bin/bash tools.sh
+bin/bash tools.sh

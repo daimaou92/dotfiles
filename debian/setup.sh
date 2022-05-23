@@ -6,11 +6,11 @@ EX=`grep "vmhgfs-fuse" /etc/fstab`
 echo "vmhgfs-fuse /mnt/hgfs  fuse defaults,allow_other   0   0" | \
 	sudo tee -a /etc/fstab
 
-# # zsh
-# /bin/bash zsh.sh
-# 
-# # Xorg
-# /bin/bash x.sh
-# 
-# # Tools
-# /bin/bash tools.sh
+# zsh
+/bin/bash zsh.sh
+
+# Xorg
+/bin/bash x.sh
+
+# Tools
+/bin/bash tools.sh

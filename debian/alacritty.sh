@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 set -e
 # Source cargo if 'tis there
-[[ -d "$HOME/.cargo" ]] && source "$HOME/.cargo/env"
+if [[ -d "$HOME/.cargo" ]]; then
+	source "$HOME/.cargo/env"
+else
+	exit 1
+fi
 
 # Check if cargo and rustup are installed
 CO=`command -v cargo`

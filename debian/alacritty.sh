@@ -1,5 +1,22 @@
 #!/usr/bin/env bash
 set -e
+
+scriptDir() {
+	P=`pwd`
+	D="$(dirname $0)"
+	if [[ $D == /* ]]; then
+		echo $D
+	elif [[ $D == \.* ]]; then
+		J=`echo "$D" | sed 's/.//'`
+		echo "${P}$J"
+	else
+		echo "${P}/$D"
+	fi
+}
+
+P=`pwd`
+SD=`scriptDir`
+
 # Source cargo if 'tis there
 if [[ -d "$HOME/.cargo" ]]; then
 	source "$HOME/.cargo/env"
@@ -17,7 +34,6 @@ CO=`command -v rustup`
 sudo apt install -y cmake pkg-config libfreetype6-dev libfontconfig1-dev \
 	libxcb-xfixes0-dev libxkbcommon-dev python3 gzip desktop-file-utils
 
-P=`pwd`
 TD=`mktemp -d`
 cd $TD
 git clone https://github.com/alacritty/alacritty.git
@@ -49,6 +65,10 @@ gzip -c extra/alacritty-msg.man | sudo tee /usr/local/share/man/man1/alacritty-m
 ZD="${ZDOTDIR:-$HOME/.config/zsh}"
 mkdir -p $ZD/.zsh_functions
 cp extra/completions/_alacritty $ZD/.zsh_functions/_alacritty
+
+ACD="${XDG_CONFIG_HOME:-$HOME/.config}/alacritty"
+mkdir -p $ACD
+ln -sf $SD/tools/alacritty/alacritty.yml $ACD/alacritty.yml
 
 cd $P
 sudo rm -rf $TD

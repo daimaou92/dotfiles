@@ -40,6 +40,6 @@ cd $P
 sudo rm -rf $TD
 
 XCD=${XDG_CONFIG_HOME:-$HOME/.config}
-mkdir -p "$XCD/i3/config"
+mkdir -p "$XCD/i3"
 # associate config
 ln -sf "$SD/x/i3/config" "$XCD/i3/config"

@@ -4,6 +4,7 @@ set -e
 if [[ -d "$HOME/.cargo" ]]; then
 	source "$HOME/.cargo/env"
 else
+	echo "\"$HOME/.cargo\" not found"
 	exit 1
 fi
 

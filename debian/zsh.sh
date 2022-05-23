@@ -28,7 +28,7 @@ cargo install fnm
 NV=`fnm ls-remote | tail -n1`
 fnm install "$NV"
 # create $HOME/.local/bin directory for node to symlink to
-mkdir $HOME/.local/bin
+mkdir -p $HOME/.local/bin
 
 # Install Golang
 GV=`git -c 'versionsort.suffix=-' ls-remote --tags --sort='v:refname' \
@@ -46,6 +46,7 @@ mkdir -p $HOME/code/go
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+mkdir -p $ZDOTDIR
 ln -sf "${SD}/zsh/.zshenv" "$HOME/.zshenv"
 cd $SD/zsh/config
 for FILE in * .[^.]*; do

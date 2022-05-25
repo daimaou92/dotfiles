@@ -15,22 +15,30 @@ scriptDir() {
 P=`pwd`
 SD=`scriptDir`
 
-VER="${1:-0.7.0}"
+# Build neovim from source if not found
+if [[ -z "$(command -v nvim)" ]]; then
+	sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cmake \
+		g++ pkg-config unzip curl doxygen
+	VER="${1:-0.7.0}"
+	TD=`mktemp -d`
+	cd $TD
+	git clone https://github.com/neovim/neovim && cd neovim
+	git fetch && git checkout "v${VER}"
+	make CMAKE_BUILD_TYPE=Release
+	sudo make install
+	cd $P
+	sudo rm -rf $TD
+	echo "neovim successfully installed"
+else
+	echo "neovim installation found"
+fi
 
-# Build neovim from source
-sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
-TD=`mktemp -d`
-cd $TD
-git clone https://github.com/neovim/neovim && cd neovim
-git fetch && git checkout "v${VER}"
-make CMAKE_BUILD_TYPE=Release
-sudo make install
-cd $P
-sudo rm -rf $TD
+# Tools
+sudo apt install -y ripgrep fd-find
+# link fdfind to fd
+mkdir -p "$HOME/.local/bin"
+ln -sf $(which fdfind) $HOME/.local/bin/fd
 
-# neovim
-# sudo apt update
-# sudo apt install -y neovim
 
 # install language servers
 # npm install -g @tailwindcss/language-server prettier typescript \
@@ -56,25 +64,22 @@ sudo rm -rf $TD
 # taplo TOML toolkit
 # cargo install --locked taplo-lsp
 
-# https://github.com/junegunn/vim-plug
-# sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-#        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-# NVD="$XDG_CONFIG_HOME/nvim"
-# NVP="$NVD/plugin"
-# NVL="$NVD/lua/daimaou92"
-# 
-# mkdir -p $NVD
-# mkdir -p $NVP
-# mkdir -p $NVL
-# 
-# 
-# cd $SD/nvim
-# for FILE in * .[^.]*; do
-# 	F="$(pwd)/$FILE"
-# 	if [ -f "$F" ]; then
-# 		ln -sf $F "${NVD}/$FILE"
-# 	fi
-# done
+# Install vimPlug https://github.com/junegunn/vim-plug
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+NVD="$XDG_CONFIG_HOME/nvim"
+mkdir -p $NVD
+
+NVL="$NVD/lua/daimaou92"
+mkdir -p $NVL
+
+cd $SD/nvim
+for FILE in * .[^.]*; do
+	F="$(pwd)/$FILE"
+	if [ -f "$F" ]; then
+		ln -sf $F "${NVD}/$FILE"
+	fi
+done
 # 
 # cd $SD/nvim/plugin
 # for FILE in *.vim; do
@@ -84,15 +89,16 @@ sudo rm -rf $TD
 # 	fi
 # done
 # 
-# cd $SD/nvim/lua/daimaou92
-# for FILE in * .[^.]*; do
-# 	F="$(pwd)/$FILE"
-# 	if [ -f "$F" ]; then
-# 		ln -sf $F "${NVL}/$FILE"
-# 	fi
-# done
-# cd $P
-# $(which nvim) -c "PlugInstall" -c "q!" -c "q!"
-# $(which nvim) \
-# 	-c "TSInstallSync! go html javascript json make rust svelte toml yaml" \
-# 	-c "q!"
+cd $SD/nvim/lua/daimaou92
+for FILE in * .[^.]*; do
+	F="$(pwd)/$FILE"
+	if [ -f "$F" ]; then
+		ln -sf $F "${NVL}/$FILE"
+	fi
+done
+
+cd $P
+$(which nvim) -c "PlugInstall" -c "q!" -c "q!"
+$(which nvim) \
+	-c "TSInstallSync! go html javascript json make rust svelte toml yaml" \
+	-c "q!"

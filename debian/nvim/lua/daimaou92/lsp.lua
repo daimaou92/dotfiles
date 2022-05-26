@@ -10,7 +10,11 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 	vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+	vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
 	vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, opts)
+	vim.keymap.set('n', '<leader>dl', '<CMD>Telescope diagnostics<CR>', opts)
+	vim.keymap.set('n', '<leader>dp', vim.diagnostic.goto_prev, opts)
+	vim.keymap.set('n', '<leader>dn', vim.diagnostic.goto_next, opts)
 end
 
 
@@ -42,6 +46,7 @@ end
 --   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 -- end
 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lspconfig = require("lspconfig")
 local util = require("lspconfig/util")
 lspconfig.gopls.setup {
@@ -56,5 +61,6 @@ lspconfig.gopls.setup {
         staticcheck = true,
       },
     },
-    on_attach = on_attach 
+    on_attach = on_attach,
+    capabilities = capabilities
   }

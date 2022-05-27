@@ -11,13 +11,12 @@ call plug#begin()
 	Plug 'neovim/nvim-lspconfig'
 	
 	" Completion
-	Plug 'L3MON4D3/LuaSnip'
 	Plug 'hrsh7th/nvim-cmp'
 	Plug 'hrsh7th/cmp-nvim-lsp'
 	Plug 'hrsh7th/cmp-buffer'
 	Plug 'hrsh7th/cmp-path'
-	Plug 'hrsh7th/cmp-nvim-lua'
-	Plug 'saadparwaiz1/cmp_luasnip'
+	Plug 'hrsh7th/cmp-vsnip'
+	Plug 'hrsh7th/vim-vsnip'
 	Plug 'onsails/lspkind.nvim'
 
 	"Misc

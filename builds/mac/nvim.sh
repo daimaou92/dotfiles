@@ -28,4 +28,4 @@ git checkout nightly
 make CMAKE_BUILD_TYPE=Release
 sudo make install
 cd $P
-rm -rf $TD
+sudo rm -rf $TD

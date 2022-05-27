@@ -24,6 +24,7 @@ call plug#begin()
 	Plug 'tjdevries/colorbuddy.nvim'
 	Plug 'tjdevries/gruvbuddy.nvim'
 	Plug 'norcalli/nvim-colorizer.lua'
+	Plug 'mbbill/undotree'
 	
 call plug#end()
 

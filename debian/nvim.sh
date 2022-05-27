@@ -66,12 +66,13 @@ ln -sf $(which fdfind) $HOME/.local/bin/fd
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 NVD="$XDG_CONFIG_HOME/nvim"
+rm -rf $NVD
 mkdir -p $NVD
 
 NVL="$NVD/lua/daimaou92"
 mkdir -p $NVL
 
-cd $SD/nvim
+cd $SD/../config/nvim
 for FILE in * .[^.]*; do
 	F="$(pwd)/$FILE"
 	if [ -f "$F" ]; then
@@ -87,7 +88,7 @@ done
 # 	fi
 # done
 # 
-cd $SD/nvim/lua/daimaou92
+cd $SD/../config/nvim/lua/daimaou92
 for FILE in * .[^.]*; do
 	F="$(pwd)/$FILE"
 	if [ -f "$F" ]; then

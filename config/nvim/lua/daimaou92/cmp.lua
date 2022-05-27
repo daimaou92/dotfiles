@@ -14,6 +14,8 @@ cmp.setup {
 			},
 			{"i", "c"}
 		),
+		-- ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+		-- ["<C-d>"] = cmp.mapping.scroll_docs(4),
 		["tab"] = cmp.config.disable
 	},
 	sources = {

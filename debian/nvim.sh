@@ -15,23 +15,21 @@ scriptDir() {
 P=`pwd`
 SD=`scriptDir`
 
-# Build neovim from source if not found
-if [[ -z "$(command -v nvim)" ]]; then
-	sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cmake \
-		g++ pkg-config unzip curl doxygen
-	VER="${1:-0.7.0}"
-	TD=`mktemp -d`
-	cd $TD
-	git clone https://github.com/neovim/neovim && cd neovim
-	git fetch && git checkout "v${VER}"
-	make CMAKE_BUILD_TYPE=Release
-	sudo make install
-	cd $P
-	sudo rm -rf $TD
-	echo "neovim successfully installed"
-else
-	echo "neovim installation found"
-fi
+# Build neovim from source
+sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf \
+	automake cmake g++ pkg-config unzip curl doxygen
+# VER="${1:-v0.7.0}"
+VER="${1:-nightly}"
+TD=`mktemp -d`
+cd $TD
+git clone https://github.com/neovim/neovim && cd neovim
+git fetch && git checkout "$VER"
+make CMAKE_BUILD_TYPE=Release
+sudo make install
+cd $P
+sudo rm -rf $TD
+echo "neovim successfully installed"
+
 
 # Tools
 sudo apt install -y ripgrep fd-find

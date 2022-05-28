@@ -1,0 +1,6 @@
+alias zc="nvim $ZDOTDIR/.zshrc"
+alias azc="source $ZDOTDIR/.zshrc"
+alias vim="/usr/bin/nvim"
+alias s="sudo systemctl"
+alias j="sudo journalctl"
+alias yay="paru"

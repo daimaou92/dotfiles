@@ -25,6 +25,9 @@ call plug#begin()
 	Plug 'norcalli/nvim-colorizer.lua'
 	Plug 'mbbill/undotree'
 	Plug 'numToStr/Comment.nvim'
+
+	" Easy rust
+	Plug 'simrat39/rust-tools.nvim'
 	
 call plug#end()
 

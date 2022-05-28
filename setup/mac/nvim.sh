@@ -22,6 +22,19 @@ mkdir -p $CD/nvim/lua/daimaou92
 # Tools
 brew install ripgrep fd
 
+# gopls
+go install golang.org/x/tools/gopls@latest
+go install golang.org/x/tools/cmd/goimports@latest
+
+# rust analyzer
+TD=`mktemp -d`
+cd $TD
+git clone https://github.com/rust-analyzer/rust-analyzer.git
+cd rust-analyzer
+cargo xtask install --server
+cd $P
+rm -rf $TD
+
 # Vim Plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'

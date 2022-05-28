@@ -53,11 +53,11 @@ go install golang.org/x/tools/cmd/goimports@latest
 # go install github.com/lighttiger2505/sqls@latest
 
 # rust-analyzer
-# git clone https://github.com/rust-analyzer/rust-analyzer.git
-# cd rust-analyzer
-# cargo xtask install --server
-# cd $P
-# rm -rf rust-analyzer
+git clone https://github.com/rust-analyzer/rust-analyzer.git
+cd rust-analyzer
+cargo xtask install --server
+cd $P
+rm -rf rust-analyzer
 
 # taplo TOML toolkit
 # cargo install --locked taplo-lsp

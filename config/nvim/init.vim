@@ -24,6 +24,7 @@ call plug#begin()
 	Plug 'tjdevries/gruvbuddy.nvim'
 	Plug 'norcalli/nvim-colorizer.lua'
 	Plug 'mbbill/undotree'
+	Plug 'numToStr/Comment.nvim'
 	
 call plug#end()
 

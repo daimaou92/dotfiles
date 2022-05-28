@@ -49,6 +49,8 @@ end
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lspconfig = require("lspconfig")
 local util = require("lspconfig/util")
+
+-- Golang
 lspconfig.gopls.setup {
     cmd = {"gopls", "serve"},
     filetypes = {"go", "gomod"},
@@ -63,4 +65,28 @@ lspconfig.gopls.setup {
     },
     on_attach = on_attach,
     capabilities = capabilities
-  }
+}
+-- formatting
+function OrgImports(wait_ms)
+    local params = vim.lsp.util.make_range_params()
+    params.context = {only = {"source.organizeImports"}}
+    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
+    for _, res in pairs(result or {}) do
+      for _, r in pairs(res.result or {}) do
+        if r.edit then
+          vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
+        else
+          vim.lsp.buf.execute_command(r.command)
+        end
+      end
+    end
+end
+local goGrp = vim.api.nvim_create_augroup("GoAutoGrp", { clear = true })
+vim.api.nvim_create_autocmd('BufWritePre', {
+	pattern={"*.go"},
+	group = goGrp,
+	callback = function() 
+		vim.lsp.buf.formatting()
+		OrgImports(1000)
+	end
+})

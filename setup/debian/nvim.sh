@@ -53,11 +53,13 @@ go install golang.org/x/tools/cmd/goimports@latest
 # go install github.com/lighttiger2505/sqls@latest
 
 # rust-analyzer
+TD=`mktemp -d`
+cd $TD
 git clone https://github.com/rust-analyzer/rust-analyzer.git
 cd rust-analyzer
 cargo xtask install --server
 cd $P
-rm -rf rust-analyzer
+rm -rf $TD
 
 # taplo TOML toolkit
 # cargo install --locked taplo-lsp
@@ -72,7 +74,7 @@ mkdir -p $NVD
 NVL="$NVD/lua/daimaou92"
 mkdir -p $NVL
 
-cd $SD/../config/nvim
+cd $SD/../../config/nvim
 for FILE in * .[^.]*; do
 	F="$(pwd)/$FILE"
 	if [ -f "$F" ]; then
@@ -88,7 +90,7 @@ done
 # 	fi
 # done
 # 
-cd $SD/../config/nvim/lua/daimaou92
+cd $SD/../../config/nvim/lua/daimaou92
 for FILE in * .[^.]*; do
 	F="$(pwd)/$FILE"
 	if [ -f "$F" ]; then
